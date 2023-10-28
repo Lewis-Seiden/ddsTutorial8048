@@ -40,5 +40,6 @@ public class Constants {
   public static final int gyroID = 0;
   public static final int pivotID = 10;
   public static final int pivotEncoderID = 0;
+  public static final int intakeID = 11;
 
 }
