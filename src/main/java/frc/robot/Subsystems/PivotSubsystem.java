@@ -26,12 +26,14 @@ public class PivotSubsystem extends SubsystemBase {
   /** Command that goes to the specified target */
   public CommandBase runToRotation(Rotation2d rotation) {
     return this.run(
-            () ->
-                pivot.setControl(
-                    positionControl
-                        .withPosition(pivotToMotorAngle(rotation.getRotations()))
-                        // This feedforward only helps at steady state. Add a motion profile for smoother motion.
-                        .withFeedForward(Constants.pivotFeedforward.calculate(rotation.getRadians(), 0.0))));
+        () ->
+            pivot.setControl(
+                positionControl
+                    .withPosition(pivotToMotorAngle(rotation.getRotations()))
+                    // This feedforward only helps at steady state. Add a motion profile for
+                    // smoother motion.
+                    .withFeedForward(
+                        Constants.pivotFeedforward.calculate(rotation.getRadians(), 0.0))));
   }
 
   /** Command that goes to the specified target and ends when setpoint is reached */

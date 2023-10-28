@@ -6,10 +6,23 @@ package frc.robot;
 
 import edu.wpi.first.math.controller.ArmFeedforward;
 import edu.wpi.first.math.controller.SimpleMotorFeedforward;
-import edu.wpi.first.math.trajectory.TrapezoidProfile.Constraints;
 import edu.wpi.first.math.util.Units;
 
 public class Constants {
+  public static class SwerveModuleConstants {
+    public final int azimuthID;
+    public final int driveID;
+    public final double azimuthOffset;
+    public final int encoderID;
+
+    public SwerveModuleConstants(int azimuthID, int driveID, int encoderID, double azimuthOffset) {
+      this.azimuthID = azimuthID;
+      this.driveID = driveID;
+      this.encoderID = encoderID;
+      this.azimuthOffset = azimuthOffset;
+    }
+  }
+
   public static final double loopTimeSeconds = 0.02;
 
   // Swerve Constants
@@ -26,6 +39,11 @@ public class Constants {
   public static final double trackWidth = Units.inchesToMeters(22.7);
   public static final double wheelBase = Units.inchesToMeters(24.5);
 
+  public static final SwerveModuleConstants module0 = new SwerveModuleConstants(0, 1, 0, 0.0);
+  public static final SwerveModuleConstants module1 = new SwerveModuleConstants(2, 3, 1, 0.0);
+  public static final SwerveModuleConstants module2 = new SwerveModuleConstants(4, 5, 2, 0.0);
+  public static final SwerveModuleConstants module3 = new SwerveModuleConstants(6, 7, 3, 0.0);
+
   // Pivot Constants
 
   public static final double pivotRatio = 1.0 / 1.0;
@@ -35,11 +53,8 @@ public class Constants {
   // May be unnecessary depending on how OP the motor is
   public static final ArmFeedforward pivotFeedforward = new ArmFeedforward(0.0, 0.0, 0.0);
 
-  // CAN IDs
-
   public static final int gyroID = 0;
   public static final int pivotID = 10;
   public static final int pivotEncoderID = 0;
   public static final int intakeID = 11;
-
 }

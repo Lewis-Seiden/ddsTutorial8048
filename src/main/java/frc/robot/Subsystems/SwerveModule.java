@@ -14,6 +14,7 @@ import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
 import frc.robot.Constants;
+import frc.robot.Constants.SwerveModuleConstants;
 
 public class SwerveModule {
   TalonFX azimuth;
@@ -37,6 +38,10 @@ public class SwerveModule {
     this.cancoderOffset = cancoderOffset;
 
     resetToAbsolute();
+  }
+
+  public SwerveModule(SwerveModuleConstants constants) {
+    this(constants.azimuthID, constants.driveID, constants.encoderID, constants.azimuthOffset);
   }
 
   public void setTargetState(SwerveModuleState state, boolean isOpenLoop) {
