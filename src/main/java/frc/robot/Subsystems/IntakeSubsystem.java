@@ -15,7 +15,9 @@ public class IntakeSubsystem extends SubsystemBase {
 
   VoltageOut voltageControl = new VoltageOut(0.0);
 
-  public IntakeSubsystem() {}
+  public IntakeSubsystem() {
+    intake.getConfigurator().apply(Constants.intakeConfig);
+  }
 
   public CommandBase run(double voltage) {
     return this.run(() -> intake.setControl(voltageControl.withOutput(voltage)));

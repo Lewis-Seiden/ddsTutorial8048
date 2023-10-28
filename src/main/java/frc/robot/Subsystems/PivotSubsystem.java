@@ -21,7 +21,9 @@ public class PivotSubsystem extends SubsystemBase {
 
   StatusSignal<Double> pivotError = pivot.getClosedLoopError();
 
-  public PivotSubsystem() {}
+  public PivotSubsystem() {
+    pivot.getConfigurator().apply(Constants.pivotConfig);
+  }
 
   /** Command that goes to the specified target */
   public CommandBase runToRotation(Rotation2d rotation) {

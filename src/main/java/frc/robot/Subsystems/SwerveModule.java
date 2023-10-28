@@ -37,6 +37,10 @@ public class SwerveModule {
     cancoder = new CANcoder(cancoderID);
     this.cancoderOffset = cancoderOffset;
 
+    azimuth.getConfigurator().apply(Constants.azimuthConfig);
+    drive.getConfigurator().apply(Constants.driveConfig);
+    cancoder.getConfigurator().apply(Constants.encoderConfig);
+
     resetToAbsolute();
   }
 
@@ -91,7 +95,7 @@ public class SwerveModule {
   }
 
   public void resetToAbsolute() {
-    azimuth.setRotorPosition(cancoderAngle.getValue() + cancoderOffset);
+    azimuth.setRotorPosition((cancoderAngle.getValue() + cancoderOffset) * Constants.azimuthRatio);
   }
 
   public SwerveModulePosition getPosition() {
